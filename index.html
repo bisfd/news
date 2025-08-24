@@ -6,21 +6,141 @@
   <title>Новости БисФД (НБФД)</title>
   <meta name="description" content="Лента новостей вселенной БисФД — только актуальные публикации.">
   <style>
-    :root{--bg:#071021;--card:#081428;--muted:#9aa4b2;--maxw:900px;font-family:Inter,system-ui,Segoe UI,Roboto,Arial}
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:#e6eef6}
-    .site{max-width:var(--maxw);margin:28px auto;padding:20px}
-    header{display:flex;align-items:center;gap:12px}
-    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700}
-    h1{margin:0;font-size:20px}
-    .feed{margin-top:20px;display:grid;gap:14px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
-    .meta{font-size:13px;color:var(--muted);margin-bottom:8px}
-    .title{font-size:18px;margin:6px 0}
-    .excerpt{color:var(--muted);font-size:14px}
-    footer{margin-top:24px;color:var(--muted);font-size:13px;text-align:center}
-    @media (max-width:600px){.logo{width:44px;height:44px}}
-  </style>
+:root {
+  --bg: #0b1227;
+  --card: #0f1a36;
+  --muted: #9aa4b2;
+  --accent: #7c3aed;
+  --maxw: 900px;
+  --font: 'Inter', system-ui, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: #e6eef6;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: 0.2s;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.site {
+  max-width: var(--maxw);
+  margin: 32px auto;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7c3aed, #06b6d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+header div > div {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.feed {
+  display: grid;
+  gap: 20px;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 20px;
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+.excerpt {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+video, img {
+  width: 100%;
+  border-radius: 12px;
+  margin: 12px 0;
+  display: block;
+}
+
+footer {
+  margin-top: 40px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .logo {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  .title {
+    font-size: 18px;
+  }
+  .excerpt {
+    font-size: 14px;
+  }
+}
+</style>
 </head>
 <body>
   <div class="site">
@@ -151,6 +271,23 @@
         author:c.dataset.author||''
       }));
     }
+
+    
+    // Получаем все карточки новостей
+  const cards = document.querySelectorAll('.card');
+
+  // Выбираем случайную карточку для пасхалки
+  const randomIndex = Math.floor(Math.random() * cards.length);
+  const easterCard = cards[randomIndex];
+
+  // Добавляем обработчик клика
+  easterCard.addEventListener('click', () => {
+    alert("💡 Псс… Этот сайт был создан https://t.me/ttwicsurvideo");
+  });
+
+  console.log("Пасхалка добавлена на новость:", easterCard.dataset.title);
+
+  
     // Пример: лог в консоль
     console.log('БисФД — новости загружены', getAllNews());
   </script>
