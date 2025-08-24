@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Новости БисФД (НБФД)</title>
+  <meta name="description" content="Лента новостей вселенной БисФД — только актуальные публикации.">
+  <style>
+    :root{--bg:#071021;--card:#081428;--muted:#9aa4b2;--maxw:900px;font-family:Inter,system-ui,Segoe UI,Roboto,Arial}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#e6eef6}
+    .site{max-width:var(--maxw);margin:28px auto;padding:20px}
+    header{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700}
+    h1{margin:0;font-size:20px}
+    .feed{margin-top:20px;display:grid;gap:14px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+    .meta{font-size:13px;color:var(--muted);margin-bottom:8px}
+    .title{font-size:18px;margin:6px 0}
+    .excerpt{color:var(--muted);font-size:14px}
+    footer{margin-top:24px;color:var(--muted);font-size:13px;text-align:center}
+    @media (max-width:600px){.logo{width:44px;height:44px}}
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header>
+      <div class="logo">БФ</div>
+      <div>
+        <h1>БисФД — Новости</h1>
+        <div style="color:var(--muted);font-size:13px">Только новости — никаких подписок, форм и блоков.</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="feed" id="feed">
+        <article class="card" data-title="final-rk-skoro" data-date="2025-08-21" data-author="НБФД">
+          <div class="meta">21 августа 2025 · НБФД</div>
+          <h2 class="title">😱 «ФИНАЛ РК СКОРО»</h2>
+          <p class="excerpt">👀 Вчерашним днём Бискас написал пост «финал рк скоро». Но! Он начал дублировать этот же пост до настоящего момента времени.</p>
+          <p class="excerpt">‼️ Фандом отреагировал, повторяв текст поста «финал рк скоро» в свои Telegram-Каналы, что даже мы в этом участвовали</p>
+          <p class="excerpt">📈 Так завирусился, что можно сказать это — мем внутри БисФД и он до сих пор «форсится».</p>
+          <p class="excerpt">❓ Причина этого мема стало, что клип «Раньше было лучше» еще не сделан и неизвестно когда будет закончен. И это забавно!</p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      © Новости БисФД | Все права защищены.
+    </footer>
+  </div>
+
+  <script>
+    // Простейший фильтр по дате/заголовку — оставлено как утилита, не UI
+    function getAllNews(){
+      return Array.from(document.querySelectorAll('.card')).map(c=>({
+        title:c.dataset.title||c.querySelector('.title')?.innerText||'',
+        date:c.dataset.date||'',
+        author:c.dataset.author||''
+      }));
+    }
+    // Пример: лог в консоль
+    console.log('БисФД — новости загружены', getAllNews());
+  </script>
+</body>
+</html>
