@@ -155,12 +155,53 @@ footer {
   .excerpt {
     font-size: 14px;
   }
+}/* Баннер */
+#offline-banner {
+position: fixed;
+left: 12px; right: 12px; top: 12px;
+max-width: var(--maxw);
+margin: 0 auto;
+display: flex; align-items: center; justify-content: space-between;
+padding: 12px 14px;
+border-radius: 12px;
+box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+transform: translateY(-140%);
+opacity: 0;
+transition: transform .38s ease, opacity .25s ease;
+pointer-events: none;
+z-index: 9999;
+background: #e63946; color: white;
 }
+#offline-banner.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
+.banner-left { display:flex; gap:10px; align-items:flex-start; flex:1; }
+.banner-icon { font-size:20px; line-height:1; margin-top:2px; }
+.banner-content { display:flex; flex-direction:column; gap:4px; min-width:0; }
+.banner-message { font-weight:700; font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.banner-details { font-size:13px; color: rgba(255,255,255,0.9); max-height:64px; overflow:auto; }
+#banner-close { background:transparent; border:none; color:inherit; font-size:18px; cursor:pointer; padding:6px; border-radius:8px; }
+#banner-close:hover { background: rgba(255,255,255,0.08); }
+/* Остальные стили */
+a { color: var(--accent); text-decoration: none; transition: 0.2s; }
+a:hover { text-decoration: underline; }
+.site { max-width: var(--maxw); margin: 32px auto; padding: 20px; }
+header { display: flex; align-items: center; gap: 16px; margin-bottom: 30px; }
+.logo { width: 60px; height: 60px; border-radius: 12px; background: linear-gradient(135deg, #7c3aed, #06b6d4); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 24px; color: #fff; }
+h1 { font-size: 24px; margin-bottom: 4px; }
+header div > div { font-size: 14px; color: var(--muted); }
+.feed { display: grid; gap: 20px; }
+.card { background: var(--card); padding: 20px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); transition: transform 0.2s, box-shadow 0.2s; }
+.card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); }
+.meta { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.title { font-size: 20px; margin: 10px 0; font-weight: 600; }
+.excerpt { font-size: 15px; color: var(--muted); margin-bottom: 10px; }
+video, img { width: 100%; border-radius: 12px; margin: 12px 0; display: block; }
+footer { margin-top: 40px; color: var(--muted); font-size: 13px; text-align: center; }
+@media (max-width: 600px) { .logo { width: 48px; height: 48px; font-size: 20px; } h1 { font-size: 20px; } .title { font-size: 18px; } .excerpt { font-size: 14px; } }
 </style>
 </head>
 <body>
-  <div id="offline-banner">⚠️ Соединение с интернетом потеряно</div>
-  <div class="site">
+<div id="offline-banner"><div class="banner-left"><div class="banner-icon">⚠️</div><div class="banner-content"><div class="banner-message" id="banner-message">Ошибка</div><div class="banner-details" id="banner-details" hidden></div></div></div><button id="banner-close">✕</button></div>
+<div class="site">
     <header>
       <img class="logo" src="photo/logo.jpg">
       <div>
@@ -302,6 +343,26 @@ footer {
     window.addEventListener('online', () => {
       banner.style.display = 'none';
     });
+
+
+    const banner = document.getElementById('offline-banner');
+const bannerMessage = document.getElementById('banner-message');
+const bannerDetails = document.getElementById('banner-details');
+const bannerClose = document.getElementById('banner-close');
+let hideTimer = null;
+function showBanner(message, details=''){
+bannerMessage.textContent = message;
+if(details){ bannerDetails.hidden=false; bannerDetails.textContent=details; } else { bannerDetails.hidden=true; }
+banner.classList.add('show');
+if(hideTimer) clearTimeout(hideTimer);
+hideTimer=setTimeout(()=>banner.classList.remove('show'),8000);
+}
+bannerClose.addEventListener('click',()=>banner.classList.remove('show'));
+window.addEventListener('offline',()=>showBanner('Соединение потеряно','Проверьте интернет'));
+window.addEventListener('online',()=>showBanner('Соединение восстановлено'));
+window.addEventListener('error',(e)=>showBanner('Ошибка JS',`${e.message}`));
+window.addEventListener('unhandledrejection',(e)=>showBanner('Ошибка Promise',`${e.reason}`));
+
 
     console.log("БисФД — новости загружены", getAllNews());
   </script>
