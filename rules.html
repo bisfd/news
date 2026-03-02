@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Правила чата</title>
+
+  <!-- Подключаем ваш CSS -->
+  <link rel="stylesheet" href="http://45.66.228.244:582/css/styles.css" />
+
+  <!-- Небольшой "план Б", если внешний CSS вдруг не загрузится -->
+  <style>
+    :root { color-scheme: dark light; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; line-height: 1.5; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 24px; }
+    header { padding: 24px 0 8px; }
+    h1 { margin: 0 0 6px; }
+    .card { border: 1px solid rgba(0,0,0,.12); border-radius: 16px; padding: 18px; }
+    ol { padding-left: 20px; }
+    li { margin: 10px 0; }
+    footer { opacity: .75; font-size: 14px; padding: 16px 0 28px; }
+  </style>
+  <script src="http://45.66.228.244:582/js/theme.js"></script>
+</head>
+
+<body>
+    <!-- Всплывающее окно -->
+<div id="popup-info" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 20px;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+">
+    <div style="
+        background: #1e1e1e;
+        padding: 35px 45px;
+        border-radius: 18px;
+        box-shadow: 0 0 25px rgba(0,0,0,0.4);
+        text-align: center;
+        max-width: 700px;
+    ">
+        <h2 style="color: #f1c40f; margin: 0 0 10px;">
+            Сайт "Новости БисФД" больше не обслуживается
+        </h2>
+        <p style="margin: 0 0 20px;">
+            Сайт будет удалён 1 марта 2026 года.
+        </p>
+
+        <button id="popup-close-btn" style="
+            padding: 10px 22px;
+            background: #f1c40f;
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+        ">Закрыть</button>
+    </div>
+</div>
+
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-live="polite" aria-pressed="true">
+            <span class="theme-icon" aria-hidden="true"></span>
+            <span class="theme-label">Светлая тема</span>
+        </button>
+  <div class="wrap">
+    <header>
+      <h1>🗓 Правила чата</h1>
+      <p>Коротко и по делу — чтобы всем было комфортно.</p>
+    </header>
+
+    <main class="card">
+      <ol>
+        <li><strong>Спам</strong> (5 и более одинаковых/похожих по смыслу сообщений/стикеров/гиф и т.д. подряд) запрещён.</li>
+        <li><strong>Оскорбление</strong> личности/семьи/религии запрещено.</li>
+        <li><strong>Обсуждение политики</strong> в негативном ключе запрещено.</li>
+        <li><strong>Порнография</strong> в любом виде запрещена.</li>
+        <li><strong>Реклама</strong> чего-либо запрещена (исключение возможно, если вы получили разрешение на рекламу у администрации).</li>
+        <li><strong>Слив</strong> любой личной информации запрещён.</li>
+        <li><strong>Споры с администрацией</strong> или её оскорбление запрещены.</li>
+        <li><strong>Притворяться</strong> админами группы/Бискасом/другими известными людьми запрещено.</li>
+        <li><strong>Ссоры и споры</strong> запрещены. Все вопросы, решение которых вызывает негативные эмоции участников/админов, обсуждайте вне группы.</li>
+      </ol>
+
+      <hr />
+
+      <p>
+        <strong>Наказание за нарушение правил</strong> — мут или бан на несколько часов/дней
+        (на усмотрение администрации). За многократные нарушения возможен бан навсегда.
+      </p>
+    </main>
+
+    <footer>
+        <p>Незнание правил не освобождает от ответственности</p>
+      <p>© НБФД / Чат • Правила действуют для всех участников</p>
+    </footer>
+  </div>
+  
+  <script>
+document.getElementById("popup-close-btn").addEventListener("click", function () {
+    document.getElementById("popup-info").style.display = "none";
+});
+</script>
+
+</body>
+</html>
