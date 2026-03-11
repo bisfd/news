@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Правила чата</title>
 
-  <!-- Подключаем ваш CSS -->
-  <link rel="stylesheet" href="https://assets.bischan.ru/css/styles.css" />
+  <!-- Подключаем CSS -->
+  <link rel="stylesheet" href="https://assets-bischan.bisfd.ru/css/styles.css" />
 
-  <!-- Небольшой "план Б", если внешний CSS вдруг не загрузится -->
+  <!-- Небольшой план Б, если внешний CSS вдруг не загрузится -->
   <style>
     :root { color-scheme: dark light; }
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; line-height: 1.5; }
@@ -20,53 +20,11 @@
     li { margin: 10px 0; }
     footer { opacity: .75; font-size: 14px; padding: 16px 0 28px; }
   </style>
-  <script src="https://assets.bischan.ru/js/theme.js"></script>
+  <script src="https://assets-bischan.bisfd.ru/js/theme.js"></script>
 </head>
 
 <body>
-    <!-- Всплывающее окно -->
-<div id="popup-info" style="
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 40px 20px;
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(4px);
-    color: #fff;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-">
-    <div style="
-        background: #1e1e1e;
-        padding: 35px 45px;
-        border-radius: 18px;
-        box-shadow: 0 0 25px rgba(0,0,0,0.4);
-        text-align: center;
-        max-width: 700px;
-    ">
-        <h2 style="color: #f1c40f; margin: 0 0 10px;">
-            Сайт "Новости БисФД" больше не обслуживается
-        </h2>
-        <p style="margin: 0 0 20px;">
-            Сайт будет удалён 1 марта 2026 года.
-        </p>
-
-        <button id="popup-close-btn" style="
-            padding: 10px 22px;
-            background: #f1c40f;
-            color: #000;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 15px;
-        ">Закрыть</button>
-    </div>
-</div>
-
-    <button class="theme-toggle" id="theme-toggle" type="button" aria-live="polite" aria-pressed="true">
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-live="polite" aria-pressed="true">
             <span class="theme-icon" aria-hidden="true"></span>
             <span class="theme-label">Светлая тема</span>
         </button>
